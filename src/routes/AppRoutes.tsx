@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import UsuarioUpdate from "../pages/UsuarioUpdate";
-import GastoCreate from "../pages/GastoCreate";
+import Gasto from "../pages/Gasto";
 import { AppMenu } from "../components/Menu";
 import { GastoProvider } from "../contexts/GastoContext";
 
@@ -11,9 +11,9 @@ const AppRoutes = () => {
       <AppMenu />
       <GastoProvider>
         <Routes>
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Gasto />} />
           <Route path="/usuario/update" element={<UsuarioUpdate />} />
-          <Route path="/gasto" element={<GastoCreate />} />
+          <Route path="/gasto" element={<Gasto />} />
         </Routes>
       </GastoProvider>
     </BrowserRouter>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useAuth } from "../hooks";
-import history from "../history";
 
 export default function Login() {
   const [mail, setMail] = useState("pedro@teste.com");
@@ -13,8 +12,6 @@ export default function Login() {
     const r = await login({ mail, senha });
     if (r.error !== "") {
       setError(r.error);
-    } else {
-      history.push("/");
     }
   };
 

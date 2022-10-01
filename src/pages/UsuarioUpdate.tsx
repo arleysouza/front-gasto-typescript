@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../hooks";
-import history from "../history";
 
 export default function UsuarioUpdate() {
   const [mail, setMail] = useState("");
   const [senha, setSenha] = useState("");
-  const [error, setError] = useState("");
+  const [msg, setMsg] = useState("");
   const { usuarioUpdate, mailLogin } = useAuth();
 
   useEffect(() => {
@@ -13,13 +12,13 @@ export default function UsuarioUpdate() {
   }, [mailLogin]);
 
   const salvar = async () => {
-    setError("");
+    setMsg("");
     if (mail !== "" || senha !== "") {
       const r = await usuarioUpdate({ mail, senha });
       if (r.error !== "") {
-        setError(r.error);
+        setMsg(r.error);
       } else {
-        history.push("/login");
+        setMsg("Atualizado com sucesso");
       }
     }
   };
@@ -43,7 +42,7 @@ export default function UsuarioUpdate() {
           onChange={(e) => setSenha(e.target.value)}
         />
       </div>
-      {error !== "" && <div>{error}</div>}
+      {msg !== "" && <div>{msg}</div>}
       <button onClick={salvar}>Atualizar</button>
     </div>
   );

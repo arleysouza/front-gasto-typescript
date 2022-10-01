@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from "react";
 import auth from "../services/auth";
 import { UsuarioInputProps } from "../types";
 import api from "../services/api";
-import history from "../history";
 import { AuthContextProps } from "../types";
 
 export const AuthContext = createContext<AuthContextProps>(
@@ -51,7 +50,6 @@ export const AuthProvider = ({ children }: any) => {
     localStorage.removeItem("@token");
     localStorage.removeItem("@mail");
     api.defaults.headers.common["Authorization"] = "";
-    history.push("/login");
   };
 
   const usuarioCreate = async (

@@ -1,20 +1,19 @@
 import { useState } from "react";
 import { useAuth } from "../hooks";
-import history from "../history";
 
 export default function UsuarioCreate() {
   const [mail, setMail] = useState("pedro@teste.com");
   const [senha, setSenha] = useState("123");
-  const [error, setError] = useState("");
+  const [msg, setMsg] = useState("");
   const { usuarioCreate } = useAuth();
 
   const salvar = async () => {
-    setError("");
+    setMsg("");
     const r = await usuarioCreate({ mail, senha });
     if (r.error !== "") {
-      setError(r.error);
+      setMsg(r.error);
     } else {
-      history.push("/login");
+      setMsg("Cadastrado com sucesso");
     }
   };
 
@@ -37,7 +36,7 @@ export default function UsuarioCreate() {
           onChange={(e) => setSenha(e.target.value)}
         />
       </div>
-      {error !== "" && <div>{error}</div>}
+      {msg !== "" && <div>{msg}</div>}
       <button onClick={salvar}>Salvar</button>
     </div>
   );
