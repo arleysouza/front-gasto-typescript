@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }: any) => {
   const [logado, setLogado] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [mailLogin, setMailLogin] = useState("");
-  
+
   // o useEffect que vai ser disparado assim que o AuthProvider for construído na tela
   useEffect(() => {
     const storage = localStorage.getItem("@token");
@@ -74,8 +74,8 @@ export const AuthProvider = ({ children }: any) => {
   ): Promise<{ error: string }> => {
     const response: any = await auth.update(usuario);
     if (response.id) {
-      if( response.mail ){
-        setMailLogin(response.mail)
+      if (response.mail) {
+        setMailLogin(response.mail);
         localStorage.setItem("@mail", JSON.stringify(response.mail));
       }
       return { error: "" };

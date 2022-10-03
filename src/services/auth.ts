@@ -7,7 +7,7 @@ class UsuarioService {
             const { data } = await api.post("/login", usuario);
             return data;
         }
-        catch (e:any) {
+        catch (e: any) {
             return { error: e.message };
         }
     }
@@ -17,7 +17,7 @@ class UsuarioService {
             const { data } = await api.post("/usuario", usuario);
             return data;
         }
-        catch (e:any) {
+        catch (e: any) {
             return { error: e.message };
         }
     }
@@ -27,7 +27,7 @@ class UsuarioService {
             const { data } = await api.put("/usuario", usuario);
             return data;
         }
-        catch (e:any) {
+        catch (e: any) {
             return { error: e.message };
         }
     }
